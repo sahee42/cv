@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>사희의 간단 소개 페이지</title>
+  <style>
+    :root{
+      --navy: #4aa3d6;          /* 하늘/소라 계열의 포인트 색상 */
+      --navy-dark: #2b81b5;
+      --ink: #1f2937;
+      --bg: #eaf6ff;             /* 밝은 하늘색 배경 */
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #4aa3d6;
+      --cta: #1e90ff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans KR", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      background: var(--bg);
+      color: var(--ink);
+      line-height:1.6;
+    }
+
+    /* 상단 네비/헤더 영역 (하늘/소라 계열) */
+    header{
+      background: linear-gradient(135deg, #7cc8f8 0%, #4aa3d6 100%);
+      color:white;
+      padding: 28px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    .container{
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    /* 로고/타이틀 영역 */
+    .brand{
+      display:flex;align-items:center;gap:12px;
+    }
+    .brand-mark{
+      width:44px;height:44px;border-radius:9px;
+      display:grid;place-items:center;
+      background: rgba(255,255,255,.15);
+      position: relative;
+    }
+    .brand-mark:before{
+      content:"";
+      width:28px;height:28px;border-radius:6px;
+      background:white;
+      display:block; margin:8px;
+      box-shadow:0 0 0 2px rgba(255,255,255,.3);
+    }
+
+    h1{font-size:1.4rem;margin:0}
+    .subtitle{font-size:.95rem;color:#eaf6ff;opacity:.95}
+
+    /* 본문 2단 레이아웃 */
+    main{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 28px 16px;
+    }
+
+    .card{
+      background: var(--card);
+      border-radius:14px;
+      padding: 22px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.04);
+      border:1px solid #eaeefc;
+    }
+
+    /* 소개 섹션 */
+    .intro{
+      display:flex;gap:18px;align-items:center;
+      padding: 22px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,255,255,.78));
+      border:1px solid #dfeaff;
+    }
+    .avatar{
+      width:84px;height:84px;border-radius:50%;
+      background: #e0f2fe;
+      display:grid;place-items:center;
+      font-size:40px; line-height:1;
+      color:#0f4a75;
+      border:2px solid #93c5fd;
+    }
+    .intro-content h2{margin:0 0 6px 0;font-size:1.4rem}
+    .intro-content p{margin:0;color:#374151}
+    .tag{display:inline-block;background:#e6f3ff;color:#155e75;padding:6px 10px;border-radius:999px;font-size:.85rem;margin-right:6px;margin-top:6px}
+
+    /* 소셜 버튼 패널 */
+    .socials{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .social-btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:999px;
+      background: #e6f3ff; color:#0b4a75; text-decoration:none;
+      border:1px solid #cfe6ff; font-weight:600;
+    }
+    .social-btn:hover{ background:#dbefff; }
+
+    /* 관심/좋아하는 것/목표 영역들 */
+    .section-title{font-size:1.1rem;margin:8px 0 12px 0;color:#1f2a44}
+    .list{display:flex;flex-wrap:wrap;gap:10px}
+    .list-item{padding:8px 12px;border-radius:999px;background:#e6f4ff;color:#0b4a75;font-size:.92rem;border:1px solid #cfe6ff}
+
+    /* 목표 문구 영역(짧고 간결하게) */
+    .goal{
+      font-family: ui-sans-serif, system-ui, -apple-system;
+      font-weight:600;
+      font-size:1.05rem;
+      color:#0f172a;
+    }
+    .goal .emph{color:#0b6fbf; font-weight:800; letter-spacing:.2px}
+
+    /* 반응형 설정 */
+    @media (min-width: 720px){
+      main{grid-template-columns: 1.05fr 0.95fr;}
+      .intro{flex:1}
+      .container{padding:0 8px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" aria-label="상단 소개 영역">
+      <div class="brand" style="gap:12px;">
+        <div class="brand-mark" aria-label="브랜드 로고"></div>
+        <div>
+          <h1>사희의 포트폴리오</h1>
+          <div class="subtitle">경영학과 3학년 · 관심: 세무회계 & 인사관리</div>
+        </div>
+      </div>
+      <!-- 소셜 바로 아래에 인스타그램 링크 패널 추가해도 좋습니다 -->
+    </div>
+  </header>
+
+  <main class="container" role="main" aria-label="메인 콘텐츠">
+    <!-- 좌측 소개 영역 -->
+    <section class="card intro" aria-label="상단 소개 영역">
+      <div class="avatar" aria-label="프로필 사진 대체 아이콘">🎯</div>
+      <div class="intro-content" style="flex:1">
+        <h2>사희</h2>
+        <p>소속: 경영학과 3학년</p>
+        <div>
+          <span class="tag">관심 분야: 세무회계, 인사관리</span>
+        </div>
+        <!-- 인스타그램 버튼 추가 위치 -->
+        <div class="socials" aria-label="소셜 링크">
+          <a class="social-btn" href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="인스타그램으로 이동">
+            Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 우측 상세 본문 영역: 두 단 구성 -->
+    <section class="card" aria-label="본문 두단 구성 - 1) 관심사 및 좋아하는 것, 2) 목표">
+      <div class="section-title" style="margin-top:0">관심 분야</div>
+      <div class="list" aria-label="관심 분야 항목">
+        <span class="list-item">세무회계</span>
+        <span class="list-item">인사관리</span>
+      </div>
+
+      <hr style="border:none;border-top:1px solid #e6e6e6;margin:14px 0;">
+
+      <div class="section-title" style="margin-top:6px">좋아하는 것</div>
+      <div class="list" aria-label="좋아하는 것 항목">
+        <span class="list-item" title="독서">독서 📚</span>
+        <span class="list-item" title="영화 관람">영화관람 🎬</span>
+        <span class="list-item" title="가벼운 운동">가벼운 운동 🏃‍♀️</span>
+      </div>
+
+      <hr style="border:none;border-top:1px solid #e6e6e6;margin:14px 0;">
+
+      <div class="section-title" style="margin-top:6px">목표</div>
+      <p class="goal" aria-label="짧은 목표 문구">
+        <span class="emph">남들에게 뒤쳐지지 않게 노력하기
+      </p>
+    </section>
+  </main>
+</body>
+</html>
