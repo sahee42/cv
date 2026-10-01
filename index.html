@@ -3,192 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>사희의 간단 소개 페이지</title>
+  <title>사희의 포트폴리오</title>
   <style>
     :root{
-      --navy: #4aa3d6;          /* 하늘/소라 계열의 포인트 색상 */
-      --navy-dark: #2b81b5;
-      --ink: #1f2937;
-      --bg: #eaf6ff;             /* 밝은 하늘색 배경 */
-      --card: #ffffff;
-      --muted: #6b7280;
-      --accent: #4aa3d6;
-      --cta: #1e90ff;
+      --sky:#79c9f2;--blue:#318fc7;--deep:#173b59;--ink:#203246;
+      --muted:#6e8496;--paper:rgba(255,255,255,.78);--line:rgba(255,255,255,.7);
+      --shadow:0 24px 60px rgba(40,102,137,.16);
     }
-
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans KR", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      background: var(--bg);
-      color: var(--ink);
-      line-height:1.6;
-    }
-
-    /* 상단 네비/헤더 영역 (하늘/소라 계열) */
-    header{
-      background: linear-gradient(135deg, #7cc8f8 0%, #4aa3d6 100%);
-      color:white;
-      padding: 28px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    }
-    .container{
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    /* 로고/타이틀 영역 */
-    .brand{
-      display:flex;align-items:center;gap:12px;
-    }
-    .brand-mark{
-      width:44px;height:44px;border-radius:9px;
-      display:grid;place-items:center;
-      background: rgba(255,255,255,.15);
-      position: relative;
-    }
-    .brand-mark:before{
-      content:"";
-      width:28px;height:28px;border-radius:6px;
-      background:white;
-      display:block; margin:8px;
-      box-shadow:0 0 0 2px rgba(255,255,255,.3);
-    }
-
-    h1{font-size:1.4rem;margin:0}
-    .subtitle{font-size:.95rem;color:#eaf6ff;opacity:.95}
-
-    /* 본문 2단 레이아웃 */
-    main{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      padding: 28px 16px;
-    }
-
-    .card{
-      background: var(--card);
-      border-radius:14px;
-      padding: 22px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.04);
-      border:1px solid #eaeefc;
-    }
-
-    /* 소개 섹션 */
-    .intro{
-      display:flex;gap:18px;align-items:center;
-      padding: 22px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,255,255,.78));
-      border:1px solid #dfeaff;
-    }
-    .avatar{
-      width:84px;height:84px;border-radius:50%;
-      background: #e0f2fe;
-      display:grid;place-items:center;
-      font-size:40px; line-height:1;
-      color:#0f4a75;
-      border:2px solid #93c5fd;
-    }
-    .intro-content h2{margin:0 0 6px 0;font-size:1.4rem}
-    .intro-content p{margin:0;color:#374151}
-    .tag{display:inline-block;background:#e6f3ff;color:#155e75;padding:6px 10px;border-radius:999px;font-size:.85rem;margin-right:6px;margin-top:6px}
-
-    /* 소셜 버튼 패널 */
-    .socials{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
-    .social-btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 14px; border-radius:999px;
-      background: #e6f3ff; color:#0b4a75; text-decoration:none;
-      border:1px solid #cfe6ff; font-weight:600;
-    }
-    .social-btn:hover{ background:#dbefff; }
-
-    /* 관심/좋아하는 것/목표 영역들 */
-    .section-title{font-size:1.1rem;margin:8px 0 12px 0;color:#1f2a44}
-    .list{display:flex;flex-wrap:wrap;gap:10px}
-    .list-item{padding:8px 12px;border-radius:999px;background:#e6f4ff;color:#0b4a75;font-size:.92rem;border:1px solid #cfe6ff}
-
-    /* 목표 문구 영역(짧고 간결하게) */
-    .goal{
-      font-family: ui-sans-serif, system-ui, -apple-system;
-      font-weight:600;
-      font-size:1.05rem;
-      color:#0f172a;
-    }
-    .goal .emph{color:#0b6fbf; font-weight:800; letter-spacing:.2px}
-
-    /* 반응형 설정 */
-    @media (min-width: 720px){
-      main{grid-template-columns: 1.05fr 0.95fr;}
-      .intro{flex:1}
-      .container{padding:0 8px}
-    }
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.6;background:#eaf8ff;overflow-x:hidden}
+    body:before,body:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(2px);opacity:.7}
+    body:before{width:460px;height:460px;top:-170px;right:-120px;background:#bdeaff}
+    body:after{width:380px;height:380px;bottom:-150px;left:-130px;background:#d9f5ff}
+    .wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    header{padding:22px 0 0}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center;color:var(--deep);font-weight:800;letter-spacing:-.03em}
+    .mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;color:white;background:linear-gradient(145deg,#8bd9fb,#318fc7);box-shadow:0 10px 22px #70bfdf66;font-size:20px}
+    .nav-note{color:#6a8799;font-size:.9rem}
+    .hero{margin-top:34px;display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:stretch}
+    .hero-copy{padding:54px 48px;border-radius:32px;background:linear-gradient(135deg,#fff 0%,#effaff 100%);box-shadow:var(--shadow);border:1px solid white;position:relative;overflow:hidden}
+    .hero-copy:after{content:"✦";position:absolute;right:30px;top:20px;color:#b8e5f8;font-size:74px;transform:rotate(16deg)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#2374a3;font-size:.84rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:24px;height:3px;border-radius:5px;background:#62bce7}
+    h1{margin:16px 0 14px;font-size:clamp(2.25rem,6vw,4.4rem);line-height:1.08;letter-spacing:-.08em;color:var(--deep)}
+    .lead{margin:0;max-width:500px;color:#60798a;font-size:1.08rem}
+    .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}.chip{padding:8px 14px;border-radius:999px;background:#e1f5ff;color:#24719b;font-weight:700;font-size:.9rem}
+    .profile-card{padding:32px;border-radius:32px;background:linear-gradient(155deg,#4aa6d4,#226e9d);color:white;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .profile-card:before{content:"";position:absolute;width:210px;height:210px;right:-70px;top:-60px;border:1px solid #ffffff55;border-radius:50%;box-shadow:0 0 0 24px #ffffff0c,0 0 0 48px #ffffff08}
+    .avatar{width:106px;height:106px;display:grid;place-items:center;border-radius:32px;background:#ffffff24;border:1px solid #ffffff55;font-size:48px;margin-bottom:30px}
+    .profile-card h2{font-size:2rem;margin:0 0 4px;letter-spacing:-.06em}.profile-card p{margin:0;color:#e2f6ff}.mini-label{margin-top:30px;font-size:.76rem;letter-spacing:.12em;opacity:.7;font-weight:800}.profile-card strong{display:block;margin-top:5px;font-size:1.08rem}
+    main{padding:28px 0 60px;display:grid;grid-template-columns:1fr 1fr;gap:24px}.card{padding:30px;border-radius:28px;background:var(--paper);border:1px solid var(--line);box-shadow:0 14px 40px #317ba31a;backdrop-filter:blur(12px)}
+    .card-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.card-title h3{margin:0;color:var(--deep);font-size:1.25rem;letter-spacing:-.04em}.card-title span{color:#6aaed0;font-size:1.2rem}
+    .calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.calendar div{text-align:center;min-height:38px;padding:8px 2px;border-radius:11px;color:#526f82;font-size:.88rem}.calendar .weekday{min-height:auto;padding:0 2px 8px;color:#77a2b9;font-size:.75rem;font-weight:800}.calendar .date{background:#f7fcff;border:1px solid #e6f3f9}.calendar .today{background:#d8f2ff;border-color:#64b9df;color:#14628d;font-weight:800}.calendar .birthday{background:linear-gradient(135deg,#fff0f5,#ffe1ec);border:1px solid #f3b4c9;color:#b3446c;font-weight:800;position:relative}.calendar .birthday:after{content:"🎂";display:block;font-size:11px;line-height:11px}.calendar .empty{background:transparent;border:0}.legend{margin-top:14px;color:#9a6b7c;font-size:.82rem}.legend b{color:#c05478}
+    .interest{display:grid;gap:20px}.interest-block{padding-bottom:18px;border-bottom:1px solid #dcecf3}.interest-block:last-child{border-bottom:0;padding-bottom:0}.interest-block h4{margin:0 0 12px;color:#547084;font-size:.88rem}.tag-list{display:flex;gap:9px;flex-wrap:wrap}.tag{padding:9px 13px;border-radius:13px;background:#edf9fe;color:#277299;font-weight:700;font-size:.9rem}.goal{margin:0;font-size:1.2rem;line-height:1.5;color:var(--deep);font-weight:800;letter-spacing:-.04em}.goal em{color:#2687b9;font-style:normal}
+    footer{padding:20px 0 38px;text-align:center;color:#88a2b1;font-size:.82rem}
+    @media(max-width:760px){.wrap{width:min(100% - 28px,560px)}.nav-note{display:none}.hero,main{grid-template-columns:1fr}.hero-copy{padding:38px 28px}.profile-card{padding:28px}.hero{margin-top:18px}main{padding-top:18px}.card{padding:24px}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container" aria-label="상단 소개 영역">
-      <div class="brand" style="gap:12px;">
-        <div class="brand-mark" aria-label="브랜드 로고"></div>
-        <div>
-          <h1>사희의 포트폴리오</h1>
-          <div class="subtitle">경영학과 3학년 · 관심: 세무회계 & 인사관리</div>
-        </div>
+  <header class="wrap">
+    <nav class="nav" aria-label="사이트 소개">
+      <div class="brand"><div class="mark">✦</div><span>SAHEE'S NOTE</span></div>
+      <div class="nav-note">오늘도 천천히, 나답게</div>
+    </nav>
+    <section class="hero" aria-label="사희 소개">
+      <div class="hero-copy">
+        <div class="eyebrow">MY PORTFOLIO</div>
+        <h1>안녕하세요,<br><span style="color:#3b9ccc">사희</span>입니다.</h1>
+        <p class="lead">배우고 경험한 것을 차곡차곡 쌓으며, 사람과 조직을 더 깊이 이해해 가고 있어요.</p>
+        <div class="chips"><span class="chip">경영학과 3학년</span><span class="chip">세무회계</span><span class="chip">인사관리</span></div>
       </div>
-      <!-- 소셜 바로 아래에 인스타그램 링크 패널 추가해도 좋습니다 -->
-    </div>
-  </header>
-
-  <main class="container" role="main" aria-label="메인 콘텐츠">
-    <!-- 좌측 소개 영역 -->
-    <section class="card intro" aria-label="상단 소개 영역">
-      <div class="avatar" aria-label="프로필 사진 대체 아이콘">🎯</div>
-      <div class="intro-content" style="flex:1">
-        <h2>사희</h2>
-        <p>소속: 경영학과 3학년</p>
-        <div>
-          <span class="tag">관심 분야: 세무회계, 인사관리</span>
-        </div>
-        <!-- 인스타그램 버튼 추가 위치 -->
-        <div class="socials" aria-label="소셜 링크">
-          <a class="social-btn" href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="인스타그램으로 이동">
-            Instagram
-          </a>
-        </div>
+      <div class="profile-card">
+        <div class="avatar">🎯</div><h2>사희</h2><p>경영학과 3학년</p>
+        <div class="mini-label">INTERESTED IN</div><strong>세무회계 · 인사관리</strong>
       </div>
     </section>
-
-    <!-- 우측 상세 본문 영역: 두 단 구성 -->
-    <section class="card" aria-label="본문 두단 구성 - 1) 관심사 및 좋아하는 것, 2) 목표">
-      <div class="section-title" style="margin-top:0">관심 분야</div>
-      <div class="list" aria-label="관심 분야 항목">
-        <span class="list-item">세무회계</span>
-        <span class="list-item">인사관리</span>
-      </div>
-
-      <hr style="border:none;border-top:1px solid #e6e6e6;margin:14px 0;">
-
-      <div class="section-title" style="margin-top:6px">좋아하는 것</div>
-      <div class="list" aria-label="좋아하는 것 항목">
-        <span class="list-item" title="독서">독서 📚</span>
-        <span class="list-item" title="영화 관람">영화관람 🎬</span>
-        <span class="list-item" title="가벼운 운동">가벼운 운동 🏃‍♀️</span>
-      </div>
-
-      <hr style="border:none;border-top:1px solid #e6e6e6;margin:14px 0;">
-
-      <div class="section-title" style="margin-top:6px">목표</div>
-      <p class="goal" aria-label="짧은 목표 문구">
-        <span class="emph">남들에게 뒤쳐지지 않게 노력하기
-      </p>
+  </header>
+  <main class="wrap">
+    <section class="card" aria-label="2026년 10월 달력">
+      <div class="card-title"><h3>10월의 기록</h3><span>☁</span></div>
+      <div id="calendar" class="calendar"></div>
+      <div class="legend"><b>● 10월 5일</b> 동생 생일</div>
+    </section>
+    <section class="card interest" aria-label="관심사와 목표">
+      <div class="interest-block"><h4>관심 분야</h4><div class="tag-list"><span class="tag">세무회계</span><span class="tag">인사관리</span></div></div>
+      <div class="interest-block"><h4>좋아하는 것</h4><div class="tag-list"><span class="tag">독서 📚</span><span class="tag">영화관람 🎬</span><span class="tag">가벼운 운동 🏃‍♀️</span></div></div>
+      <div><h4>나의 목표</h4><p class="goal"><em>남들에게 뒤처지지 않도록</em><br>꾸준히 배우고 성장하기</p></div>
     </section>
   </main>
+  <footer class="wrap">사희의 작은 포트폴리오 · 2026</footer>
+  <script>
+    (() => {
+      const calendar = document.querySelector('#calendar');
+      const year = 2026, month = 9, birthday = 5;
+      ['일','월','화','수','목','금','토'].forEach(day => {
+        const el = document.createElement('div'); el.className='weekday'; el.textContent=day; calendar.appendChild(el);
+      });
+      const firstDay = new Date(year, month, 1).getDay();
+      const totalDays = new Date(year, month + 1, 0).getDate();
+      for(let i=0;i<firstDay;i++){ const el=document.createElement('div'); el.className='empty'; calendar.appendChild(el); }
+      for(let day=1;day<=totalDays;day++){
+        const el=document.createElement('div'); el.className='date' + (day===birthday?' birthday':''); el.textContent=day;
+        if(day===birthday) el.setAttribute('aria-label','10월 5일 동생 생일');
+        calendar.appendChild(el);
+      }
+    })();
+  </script>
 </body>
 </html>
